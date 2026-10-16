@@ -1,0 +1,13 @@
+# BELLHOP outputs
+*.shd
+*.ray
+*.arr
+*.prt
+*.mat
+
+# figures
+*.png
+
+# OS / MATLAB clutter
+*.asv
+.DS_Store
