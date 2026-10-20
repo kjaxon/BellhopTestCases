@@ -1,14 +1,7 @@
 % Simple NESMA script that uses Mike Porters method to plotting eigen rays
-subdirectory = './EnvironmentFiles/';
-if ~isfolder( subdirectory )
-    mkdir( subdirectory );
-end
-filename = 'NESMA_eigen'
-fileroot = [subdirectory filename]
+paths = setup_paths
 
-copyfile( [subdirectory 'seamount.bty'], [ fileroot '.bty' ] )
-copyfile( [subdirectory 'NESMA.ssp'], [ fileroot '.ssp' ] )
-
+fileroot = prep_envfiles(paths, 'NESMA_eigen')
 bellhop3d( fileroot )
 
 figure

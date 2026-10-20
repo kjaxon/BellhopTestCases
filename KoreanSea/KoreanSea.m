@@ -13,6 +13,8 @@ units = 'km';
 %makebty;             % make the bathymetry
 
 % Nx2D transmission loss
+
+% Set up and add env files to path
 fileroot = prep_envfiles( paths, 'KoreanSea_Nx2D' );
 
 bellhopnx2d( fileroot )     % run BELLHOP3D on the munk3d test case
