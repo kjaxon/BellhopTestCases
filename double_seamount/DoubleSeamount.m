@@ -1,5 +1,7 @@
 % run the double seamount test case (created by YT Lin)
 
+paths = setup_paths()
+
 global units
 units = 'km';
 
@@ -13,9 +15,8 @@ axis( [ 0 6 -4 4 ] )
 %print -depsc2 Bathy
 
 % ray trace
-filename = 'DoubleSeamount3D_ray'
-subdirectory = './EnvironmentFiles/'
-fileroot = [subdirectory filename]
+caseName = 'DoubleSeamount3D_ray'
+fileroot = fullfile( paths.env, caseName );
 
 bellhop3d(fileroot)
 
@@ -26,9 +27,8 @@ print -depsc2 DoubleSeamount3D_ray
 
 %%
 % default beam spacing becomes about 300 beams in each direction
-filename = 'DoubleSeamount3D'
-subdirectory = './EnvironmentFiles/'
-fileroot = [subdirectory filename]
+caseName = 'DoubleSeamount3D'
+fileroot = fullfile( paths.env, caseName );
 
 bellhop3d(fileroot)
 
@@ -44,11 +44,10 @@ print -depsc2 3DGaussian
 %%
 % default beam spacing becomes about 300 beams in each direction
 
-copyfile( [subdirectory 'DoubleSeamount3D.bty'], [subdirectory 'DoubleSeamount3DHat.bty'] )
+copyfile( [paths.env '/DoubleSeamount3D.bty'], [paths.env '/DoubleSeamount3DHat.bty'] )
 
-filename = 'DoubleSeamount3DHat'
-subdirectory = './EnvironmentFiles/'
-fileroot = [subdirectory filename]
+caseName = 'DoubleSeamount3DHat'
+fileroot = fullfile( paths.env, caseName );
 
 bellhop3d(fileroot)
 
@@ -62,5 +61,5 @@ axis( [ 0 6 -4 4 ] )
 print -dpng 3DHat
 
 %%
-delete([subdirectory 'DoubleSeamount3D.bty'])
-delete([subdirectory 'DoubleSeamount3DHat.bty'])
+delete([paths.env '/DoubleSeamount3D.bty'])
+delete([paths.env '/DoubleSeamount3DHat.bty'])

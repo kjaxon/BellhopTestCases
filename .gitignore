@@ -4,6 +4,7 @@
 *.arr
 *.prt
 *.mat
+*.eps
 
 # figures
 *.png

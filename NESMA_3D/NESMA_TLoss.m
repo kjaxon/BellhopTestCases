@@ -1,11 +1,14 @@
 % New England Seamount 3D Transmission loss plotting script
 % Claude assisted
 %
-
 clearvars -except lar lor zr
+
+paths = setup_paths
+
 if ~exist('lar', 'var') || ~exist('lor', 'var') || ~exist('zr', 'var')
     load(".\NESMA_RR2409_bathy_25m.mat")
 end
+
 lon = lor;
 lat = lar;
 depth = zr;
@@ -14,13 +17,8 @@ src_lon = -64.0;
 src_lat = 38.3;
 R_earth = 6371.0;
 
-subdirectory = './EnvironmentFiles/';
-if ~isfolder( subdirectory )
-    mkdir( subdirectory );
-end
-
-filename = 'NESMA_TLoss'
-fileroot = [subdirectory filename]
+caseName = 'NESMA_TLoss'
+fileroot = fullfile( paths.env, caseName );
 
 write_bty3d([fileroot '.bty'], lon, lat, depth, ...
     'CropLon',     [-68.0, -61.0], ...

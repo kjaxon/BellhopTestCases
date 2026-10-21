@@ -7,14 +7,15 @@
 % the polar and sideview plots should be done in separate BELLHOP runs for
 % speed ...
 
+paths = setup_paths()
+
 global units
 units = 'km';
-subdirectory = './EnvironmentFiles/'
 
 %Bathy = LoadBathymetry( 'Taiwan.xyz' );   % load the xyz file from ETOPO1
 %writebdry3d( 'Taiwan.bty', Bathy );        % save it in my bty format
 figure
-plotbdry3d([subdirectory 'Taiwan.bty'])                          % howzit look?
+plotbdry3d([paths.env '/Taiwan.bty'])                          % howzit look?
 caxis( [ -7500 7500 ] )
 
 %parula_dat = parula;
@@ -30,7 +31,7 @@ colormap( ocean_land )
 
 
 %%
-plotssp3d ([subdirectory 'Taiwan'])
+plotssp3d ([paths.env '/Taiwan'])
 caxis( [ 1510 1535 ])
 print -dpng TaiwanSSP
 
@@ -38,12 +39,7 @@ print -dpng TaiwanSSP
 %%
 
 % 2D Transmission Loss runs
-
-filename = 'TaiwanNx2D'
-fileroot = [subdirectory filename]
-
-copyfile( [subdirectory 'Taiwan.bty'], [ fileroot '.bty' ] )
-copyfile( [subdirectory 'Taiwan.ssp'], [ fileroot '.ssp' ] )
+fileroot = prep_envfiles( paths, 'TaiwanNx2D' );
 
 bellhopnx2d( fileroot )
 
@@ -63,12 +59,7 @@ delete( [ fileroot '.ssp' ] )
 %%
 
 % 3D Transmission Loss runs
-
-filename = 'Taiwan3D'
-fileroot = [subdirectory filename]
-
-copyfile( [subdirectory 'Taiwan.bty'], [ fileroot '.bty' ] )
-copyfile( [subdirectory 'Taiwan.ssp'], [ fileroot '.ssp' ] )
+fileroot = prep_envfiles( paths, 'Taiwan3D' );
 
 bellhop3d( fileroot )
 
@@ -93,12 +84,7 @@ delete( [ fileroot '.ssp' ] )
 %%
 
 % ray trace runs
-
-filename = 'TaiwanNx2D_ray'
-fileroot = [subdirectory filename]
-
-copyfile( [subdirectory 'Taiwan.bty'], [ fileroot '.bty' ] )
-copyfile( [subdirectory 'Taiwan.ssp'], [ fileroot '.ssp' ] )
+fileroot = prep_envfiles( paths, 'TaiwanNx2D_ray' );
 
 bellhopnx2d( fileroot )
 
@@ -117,12 +103,7 @@ delete( [ fileroot '.bty' ] )
 delete( [ fileroot '.ssp' ] )
 
 %%
-
-filename = 'Taiwan3D_ray'
-fileroot = [subdirectory filename]
-
-copyfile( [subdirectory 'Taiwan.bty'], [ fileroot '.bty' ] )
-copyfile( [subdirectory 'Taiwan.ssp'], [ fileroot '.ssp' ] )
+fileroot = prep_envfiles( paths, 'Taiwan3D_ray' );
 
 bellhop3d( fileroot )
 

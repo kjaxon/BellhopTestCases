@@ -1,4 +1,4 @@
-function bellhop( filename )
+function bellhopnx2d( filename, runtype )
 % run the BELLHOPNx2D program
 %
 % usage: bellhop( filename )
@@ -7,11 +7,18 @@ function bellhop( filename )
 paths = setup_paths();
 
 if ispc
-    runbellhop = fullfile( paths.bin, 'bellhopcxxnx2d.exe' );
+    if runtype == 1
+        runbellhop = fullfile( paths.bin, 'bellhopcudanx2d.exe' );
+    else
+        runbellhop = fullfile( paths.bin, 'bellhopcxxnx2d.exe' );
+    end
 else
-    runbellhop = fullfile( paths.bin, 'bellhopcxxnx2d' );
+    if runtype == 1
+        runbellhop = fullfile( paths.bin, 'bellhopcudanx2d' );
+    else
+        runbellhop = fullfile( paths.bin, 'bellhopcxxnx2d' );
+    end
 end
-
 if ~isfile( runbellhop )
    error( 'bellhop not found: %s', runbellhop )
 else

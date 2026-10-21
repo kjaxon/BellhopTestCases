@@ -1,7 +1,7 @@
 
 seamount_parameters
 
-btyfil = './EnvironmentFiles/DoubleSeamount3D.bty';
+btyfil = [paths.env '/DoubleSeamount3D.bty'];
 % interp_type = 'R';
 interp_type = 'CS';
 

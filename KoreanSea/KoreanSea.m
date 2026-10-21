@@ -17,7 +17,7 @@ units = 'km';
 % Set up and add env files to path
 fileroot = prep_envfiles( paths, 'KoreanSea_Nx2D' );
 
-bellhopnx2d( fileroot )     % run BELLHOP3D on the munk3d test case
+bellhopnx2d( fileroot, 0 )     % run BELLHOP3D on the munk3d test case
 
 % polar plot of the TL
 figure
@@ -36,7 +36,7 @@ delete( [ fileroot '.ssp' ] )
 %% 3D transmission loss
 fileroot = prep_envfiles( paths, 'KoreanSea_3D' );
 
-bellhop3d( fileroot )     % run BELLHOP3D on the munk3d test case
+bellhop3d( fileroot, 0 )     % run BELLHOP3D on the munk3d test case
 
 % polar plot of the TL
 figure
@@ -56,7 +56,7 @@ delete( [ fileroot '.ssp' ] )
 %% Nx2D ray trace
 fileroot = prep_envfiles( paths, 'KoreanSea_Nx2D_ray' );
 
-bellhopnx2d( fileroot )
+bellhopnx2d( fileroot, 0 )
 
 figure
 plotbdry3d( [ fileroot '.bty' ] )
@@ -71,7 +71,7 @@ delete( [ fileroot '.ssp' ] )
 %% 3D ray trace
 fileroot = prep_envfiles( paths, 'KoreanSea_3D_ray' );
 
-bellhop3d( fileroot )
+bellhop3d( fileroot, 0 )
 
 figure
 plotbdry3d( [ fileroot '.bty' ] )
@@ -88,7 +88,7 @@ delete( [ fileroot '.ssp' ] )
 % This takes about 4 hours to run on my laptop ...
 fileroot = prep_envfiles( paths, 'KoreanSea_3D_eigen' );
 
-bellhop3d( fileroot )
+bellhop3d( fileroot, 0 )
 
 figure
 plotbdry3d( [ fileroot '.bty' ] )

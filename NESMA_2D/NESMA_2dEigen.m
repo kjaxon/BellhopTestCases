@@ -1,11 +1,9 @@
 clearvars -except lar lor zr
+
+paths = setup_paths()
+
 if ~exist('lar', 'var') || ~exist('lor', 'var') || ~exist('zr', 'var')
     load(".\NESMA_RR2409_bathy_25m.mat")
-end
-
-subdirectory = './EnvironmentFiles';
-if ~isfolder( subdirectory )
-    mkdir( subdirectory );
 end
 
 cases = struct( ...
@@ -14,7 +12,7 @@ cases = struct( ...
     'rcv',  {[38.80 -63.85], [38.60 -62.85], [39.10 -64.45]});
 
 for k = 1:numel(cases)
-    tag = fullfile( subdirectory, sprintf( 'NESMA_%s', cases(k).name ) );
+    tag = fullfile( paths.env, sprintf( 'NESMA_%s', cases(k).name ) );
 
     [rkm, zb, lat, lon, rR] = make_transect(cases(k).src, cases(k).rcv, lar, lor, zr);
     Dmax = ceil(max(zb)); % Max depth
