@@ -18,6 +18,7 @@ axis( [ 0 6 -4 4 ] )
 caseName = 'DoubleSeamount3D_ray'
 fileroot = fullfile( paths.env, caseName );
 
+
 bellhop3d(fileroot)
 
 hold on

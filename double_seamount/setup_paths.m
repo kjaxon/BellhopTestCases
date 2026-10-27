@@ -5,7 +5,7 @@ root = fileparts( mfilename( 'fullpath' ) );
 
 paths.root = root;
 paths.env  = fullfile( root, 'env' );
-paths.bin  = fullfile( root, 'bellhopcuda' );
+paths.bin  = fullfile( root, 'bellhop' );
 paths.at   = fullfile( root, 'acoustictoolkit' );
 
 addpath( genpath( paths.at ) );

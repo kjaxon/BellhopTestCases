@@ -2,20 +2,21 @@ function bellhopnx2d( filename, runtype )
 % run the BELLHOPNx2D program
 %
 % usage: bellhop( filename )
-% where filename is the environmental file
+
+if nargin < 2, runtype = 'P'; end
 
 paths = setup_paths();
 
 if ispc
-    if runtype == 1
+    if strcmpi( runtype, 'C' )
         runbellhop = fullfile( paths.bin, 'bellhopcudanx2d.exe' );
-    else
+    elseif strcmpi( runtype, 'P' )
         runbellhop = fullfile( paths.bin, 'bellhopcxxnx2d.exe' );
     end
 else
-    if runtype == 1
+    if strcmpi( runtype, 'C' )
         runbellhop = fullfile( paths.bin, 'bellhopcudanx2d' );
-    else
+    elseif strcmpi( runtype, 'P' )
         runbellhop = fullfile( paths.bin, 'bellhopcxxnx2d' );
     end
 end

@@ -2,7 +2,10 @@
 % mbp, July 2011
 %
 % edited by Khalil Jackson 2026
-% Changed bellhop3d calls for Nx2D to bellhopnx2d
+% The Nx2D runs call regular bellhop
+% The original code handled both Nx2D and 2D Bellhop in the same function
+% If you use bellhopcuda on this test case make sure to call
+% bellhopcxxnx2d/bellhopcudanx2d or the run will fail.
 
 % the polar and sideview plots should be done in separate BELLHOP runs for
 % speed ...
@@ -35,13 +38,11 @@ plotssp3d ([paths.env '/Taiwan'])
 caxis( [ 1510 1535 ])
 print -dpng TaiwanSSP
 
-% makebty;             % make the bathymetry
-%%
 
 % 2D Transmission Loss runs
 fileroot = prep_envfiles( paths, 'TaiwanNx2D' );
 
-bellhopnx2d( fileroot )
+bellhop( fileroot )
 
 % polar plot of the TL
 figure
@@ -86,7 +87,7 @@ delete( [ fileroot '.ssp' ] )
 % ray trace runs
 fileroot = prep_envfiles( paths, 'TaiwanNx2D_ray' );
 
-bellhopnx2d( fileroot )
+bellhop( fileroot )
 
 figure
 plotbdry3d( [ fileroot '.bty' ] )

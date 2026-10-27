@@ -7,9 +7,9 @@ function bellhop( filename )
 paths = setup_paths();
 
 if ispc
-    runbellhop = fullfile( paths.bin, 'bellhopcudanx2d.exe' );
+    runbellhop = fullfile( paths.bin, 'bellhop.exe' );
 else
-    runbellhop = fullfile( paths.bin, 'bellhopcudanx2d' );
+    runbellhop = fullfile( paths.bin, 'bellhop' );
 end
 
 if ~isfile( runbellhop )

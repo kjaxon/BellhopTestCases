@@ -1,4 +1,5 @@
-btyfil = 'KoreanSea.bty';
+paths  = setup_paths();
+btyfil = fullfile( paths.env, 'KoreanSea.bty' );
 interp_type = 'R';
 interp_type = 'C';
 

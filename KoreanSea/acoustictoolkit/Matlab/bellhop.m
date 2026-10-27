@@ -2,16 +2,24 @@ function bellhop( filename )
 % run the BELLHOP program
 %
 % usage: bellhop( filename )
-% where filename is the environmental file
+
+if nargin < 2, runtype = 'P'; end
 
 paths = setup_paths();
 
 if ispc
-    runbellhop = fullfile( paths.bin, 'bellhopcxx.exe' );
+    if strcmpi( runtype, 'C' )
+        runbellhop = fullfile( paths.bin, 'bellhopcuda.exe' );
+    elseif strcmpi( runtype, 'P' )
+        runbellhop = fullfile( paths.bin, 'bellhopcxx.exe' );
+    end
 else
-    runbellhop = fullfile( paths.bin, 'bellhopcxx' );
+    if strcmpi( runtype, 'C' )
+        runbellhop = fullfile( paths.bin, 'bellhopcuda' );
+    elseif strcmpi( runtype, 'P' )
+        runbellhop = fullfile( paths.bin, 'bellhopcxx' );
+    end
 end
-
 if ~isfile( runbellhop )
    error( 'bellhop not found: %s', runbellhop )
 else

@@ -7,9 +7,9 @@ function bellhop( filename )
 paths = setup_paths();
 
 if ispc
-    runbellhop = fullfile( paths.bin, 'bellhopcuda3d.exe' );
+    runbellhop = fullfile( paths.bin, 'bellhop3d.exe' );
 else
-    runbellhop = fullfile( paths.bin, 'bellhopcuda3d' );
+    runbellhop = fullfile( paths.bin, 'bellhop3d' );
 end
 
 if ~isfile( runbellhop )
