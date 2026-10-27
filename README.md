@@ -1,11 +1,17 @@
 # README
-This folder contains all the nesessary MATLAB code needed to fun the five underwater acoustic test cases:
-1. Tiawan Sea, Korean Sea, NESMA 3D,,NESMA 2D, and Double Seamount
+
+This folder contains all the necessary MATLAB code needed to run the five underwater acoustic test cases:
+
+- Taiwan Sea, Korean Sea, Double Seamount, NESMA 3D, and NESMA 2D
 
 ## Instructions
-Download the prebuilt binaries [here](https://github.com/kjaxon/BellhopTestCases/releases/tag/v1.0.0). 
-Extract and move them to the bellhopcuda directory as shown bellow. 
-After that, run the main script in MATLAB and the plot should render.
+
+**WINDOWS ONLY**
+
+To run this on Linux please follow the instructions in the APPG google drive.
+
+This version uses the prebuilt Windows binaries from the Ocean Acoustics Library (source link at the bottom of the page). You do not need to download the library, just run the main script in their folders. Any extra steps are noted in the README within each folder.
+
 # Bellhop Test Cases — Directory Structure
 
 Each test case is a self-contained folder: its own environment files, bellhopcuda executables, and a trimmed copy of the Acoustics Toolbox MATLAB routines. A folder can be zipped, moved, or cloned onto Windows or Linux without editing paths. Below is an example of the file structure.
@@ -39,36 +45,8 @@ BellhopTestCases/
         └── ...                    # read_shd, plotshd, plotray3d, plotbdry3d, caxisrev, ...
 ```
 
-## How the paths work
+&nbsp;
 
-- **`setup_paths.m`** locates the test case folder with `mfilename('fullpath')`, so it works from any current directory. It returns:
+## Ocean Acoustic Toolbox
 
-  | Field        | Folder                |
-  |--------------|-----------------------|
-  | `paths.root` | test case folder      |
-  | `paths.env`  | `env/`                |
-  | `paths.bin`  | `bellhopcuda/`        |
-  | `paths.at`   | `acoustictoolkit/`    |
-
-
-- **Case files:** scripts build file roots with `fullfile(paths.env, '<CaseName>')`. BELLHOP reads `<CaseName>.env` / `.bty` / `.ssp` and writes its outputs next to them in `env/`.
-## Executables
-
-The [prebuilt binaires](https://github.com/kjaxon/BellhopTestCases/releases/tag/v1.0.0) need to run the MATLAB programs. We made a release the should be on the right side of your screen.
-If you would like a fresh compile, please visit the [original repository](https://github.com/A-New-BellHope/bellhopcuda).
-
-| Platform | Names                                                         | Extra step                |
-|----------|---------------------------------------------------------------|---------------------------|
-| Windows  | `bellhopcuda.exe`, `bellhopcuda2d.exe`, `bellhopcuda3d.exe`, `bellhopcudanx2d.exe` | —                         |
-| Linux    | same names, no extension                                      | `chmod +x bellhopcuda/*`  |
-
-Windows and Linux binaries can sit in the same folder; the wrappers pick the right one with `ispc`. Only the executables (and any `.dll` / `.so` they depend on) are needed, not the full build folder.
-
-
-## Linux notes
-
-- Folder names are case-sensitive; they must match `setup_paths.m` exactly.
-- If a run fails from MATLAB with a library error but works in a terminal, clear MATLAB's `LD_LIBRARY_PATH` in the wrapper's shell call.
-
-## Acoustic Toolbox
-**Soure:** https://oalib-acoustics.org/models-and-software/acoustics-toolbox/
+**Soure:** [https\://oalib-acoustics.org/models-and-software/acoustics-toolbox/](https://oalib-acoustics.org/models-and-software/acoustics-toolbox/)
